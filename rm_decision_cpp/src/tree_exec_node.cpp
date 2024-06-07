@@ -5,7 +5,6 @@
 #include "rm_decision_cpp/behaviors/anti_autoaim.hpp"
 #include "rm_decision_cpp/behaviors/sentry_cmd.hpp"
 #include "rm_decision_cpp/behaviors/control_gimbal.hpp"
-#include "rm_decision_cpp/behaviors/align_chassis.hpp"
 #include <rclcpp/rclcpp.hpp>
 #include "behaviortree_cpp/bt_factory.h"
 #include "behaviortree_cpp/loggers/groot2_publisher.h"
@@ -70,7 +69,6 @@ int main(int argc, char **argv)
   factory.registerNodeType<rm_decision::Topics2Blackboard>("Topics2Blackboard",node,tf_buffer,tf_listener);
   factory.registerNodeType<rm_decision::ControlGimbal>("ControlGimbal",node,tf_buffer,tf_listener);
   factory.registerNodeType<rm_decision::SentryCmd>("SentryCmd",node);
-  factory.registerNodeType<rm_decision::AlignChassis>("AlignChassis",node,tf_buffer,tf_listener);
   RCLCPP_INFO(node->get_logger(), "Loaded all custom nodes");
 
   // Visualize custom types in the Blackboard

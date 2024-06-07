@@ -57,7 +57,6 @@ add_library(${PROJECT_NAME} SHARED
   src/behaviors/topics2blackboard.cpp
   src/behaviors/sentry_cmd.cpp
   src/behaviors/control_gimbal.cpp
-  src/behaviors/align_chassis.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -76,7 +75,6 @@ add_executable(tree_exec_node src/tree_exec_node.cpp
   src/behaviors/topics2blackboard.cpp
   src/behaviors/sentry_cmd.cpp
   src/behaviors/control_gimbal.cpp
-  src/behaviors/align_chassis.cpp
 )
 ament_target_dependencies(tree_exec_node ${ros_dependencies})
 
