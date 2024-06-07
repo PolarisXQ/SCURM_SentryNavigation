@@ -1,6 +1,20 @@
 # SCURM火锅战队 24赛季哨兵导航
 
-For docker image, please read [DevcontainterGuide](./DevcontainterGuide.md)
+开源的初衷是想把自己的一些好的想法和大家一起分享，所以欢迎各位联系我和我讨论，欢迎PR，提issue~
+
+主要的创新：
+
+1. 实现FAST-LIO2的重定位模式，不需要另外运行重定位算法。算力需求小，使得整个框架在NUC12上的资源占用在30%左右；精度高，定位误差小；内存占用不会随着时间增长。
+
+2. 改进navigation2的故障恢复行为，卡住时机器人会向无碰撞的方向运动。
+
+3. 实现底盘和坡面对齐(comming soon)
+
+算法框架和思路详见技术报告
+
+作者：夏旗以及所有在开发过程中给予各种支持的前辈
+
+Docker镜像使用方法参阅[DevcontainterGuide](./DevcontainterGuide.md)
 
 ## 包说明
 
