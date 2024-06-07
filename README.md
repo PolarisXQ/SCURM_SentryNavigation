@@ -1,6 +1,6 @@
 # SCURM火锅战队 24赛季哨兵导航
 
-开源的初衷是想把自己的一些好的想法和大家一起分享，所以欢迎各位联系我和我讨论，欢迎PR，提issue~
+开源的初衷是想把自己的一些好的想法和大家一起分享，所以欢迎各位联系我和我讨论，欢迎PR，提issue🫠~
 
 主要的创新：
 
@@ -12,7 +12,7 @@
 
 算法框架和思路详见技术报告
 
-作者：夏旗以及所有在开发过程中给予各种支持的前辈
+作者：夏旗以及所有在开发过程中给予各种支持的前辈&同学们🌹🌹🌹
 
 Docker镜像使用方法参阅[DevcontainterGuide](./DevcontainterGuide.md)
 
@@ -28,7 +28,7 @@ Docker镜像使用方法参阅[DevcontainterGuide](./DevcontainterGuide.md)
 | ✅FAST_LIO | fastlio mapping |
 | ✅livox_ros_driver2 | Driver for livox lidar |
 | ✅nav2_plugins <br> - behavior_ext_plugins <br> - costmap_intensity <br> - velocity_smoother_ext | self defined nav2 plugins <br> - an enhenced back_up action that move toward free space <br> - 2 costmap_2d layer that use intensity filed of pointcloud msg rather than height (use with terrain analysis in autonomous_exploration_development_environment) <br> - an enhenced velocity smoother that increase the speed on slope automatically (use with terrain analysis-pathNorm) |
-| ✅rm_decision_cpp | sentry desicion module based on BehaviourTree.CPP |
+| ✅rm_decision_cpp | sentry desicion module based on BehaviourTree.CPP, implement nav2pose, topics2blackboard, anti_autoaim, attack etc. behaviours. |
 
 ## LAUNCH
 
