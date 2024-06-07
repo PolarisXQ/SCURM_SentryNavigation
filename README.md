@@ -13,7 +13,7 @@ For docker image, please read [DevcontainterGuide](./DevcontainterGuide.md)
 | ✅control_panel | a simple Qt GUI for simulating referee system |
 | ✅FAST_LIO | fastlio mapping |
 | ✅livox_ros_driver2 | Driver for livox lidar |
-| ✅nav2_plugins <br> - behavior_ext_plugins <br> - costmap_intensity <br> - nav2_mppi_controller_ext <br> - velocity_smoother_ext | self defined nav2 plugins <br> - an enhenced back_up action that move toward free space <br> - 2 costmap_2d layer that use intensity filed of pointcloud msg rather than height (use with terrain analysis in autonomous_exploration_development_environment) <br> - an enhenced mppi controller that is able to adjust pose before some complex terrain(use with terrain analysis-pathNorm) <br> - an enhenced velocity smoother that increase the speed on slope automatically (use with terrain analysis-pathNorm) |
+| ✅nav2_plugins <br> - behavior_ext_plugins <br> - costmap_intensity <br> - velocity_smoother_ext | self defined nav2 plugins <br> - an enhenced back_up action that move toward free space <br> - 2 costmap_2d layer that use intensity filed of pointcloud msg rather than height (use with terrain analysis in autonomous_exploration_development_environment) <br> - an enhenced velocity smoother that increase the speed on slope automatically (use with terrain analysis-pathNorm) |
 | ✅rm_decision_cpp | sentry desicion module based on BehaviourTree.CPP |
 
 ## LAUNCH
