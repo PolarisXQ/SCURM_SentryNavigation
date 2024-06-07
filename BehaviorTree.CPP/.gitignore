@@ -1,0 +1,13 @@
+*~
+/CMakeLists.txt.user
+build*
+site/*
+/.vscode/
+.vs/
+
+# clangd cache
+/.cache/*
+CMakeSettings.json
+
+# OSX junk
+.DS_Store

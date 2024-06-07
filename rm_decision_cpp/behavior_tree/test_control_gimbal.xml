@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="test_ctrl_gimbal">
+    <ReactiveSequence>
+      <ControlGimbal goal="2.8,-0.27,0.5,0.0,0.0,0.0,0.0"/>
+    </ReactiveSequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="ControlGimbal">
+      <input_port name="goal"
+                  type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;">goal send to navigator.</input_port>
+    </Action>
+  </TreeNodesModel>
+
+</root>

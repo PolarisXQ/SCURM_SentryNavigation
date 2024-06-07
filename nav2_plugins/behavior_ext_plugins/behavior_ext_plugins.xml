@@ -1,0 +1,7 @@
+<class_libraries>
+	<library path="behavior_ext_plugins_lib">
+	  <class name="nav2_behaviors/BackUpTwzFree" type="nav2_behaviors::BackUpTwzFree" base_class_type="nav2_core::Behavior">
+	    <description></description>
+	  </class>
+	</library>
+</class_libraries>

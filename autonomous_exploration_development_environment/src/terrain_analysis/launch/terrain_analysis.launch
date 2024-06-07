@@ -1,0 +1,42 @@
+<launch>
+
+  <node pkg="terrain_analysis" exec="terrainAnalysis" name="terrainAnalysis" output="screen">
+    <remap from="/registered_scan" to="/cloud_registered"/>
+    <param name="map_frame" value="odom"/>
+    <param name="scanVoxelSize" value="0.08" /><!--点云下采样-->
+    <param name="decayTime" value="0.5" /><!--点云时间差阈值 大于则不会被处理-->
+    <param name="noDecayDis" value="0.0" /><!--点云距离阈值 小于该阈值不考虑时间差-->
+    <param name="clearingDis" value="0.0" /><!--该距离外的点会被清除-->
+    
+    <param name="useSorting" value="true" /> <!--这个参数开起来就能上坡了；如果useSorting,那么就以周围点中的分位点作为地面点，否则以最低点作为地面点；周围其余点相对于地面点的高度作为通过代价，所以对于坡面，有的点的代价是正，有的是负，就相互抵消了；不要与considerDrop同时开启，计算上会有冲突-->
+    <param name="quantileZ" value="0.4" /> <!--useful if useSorting is enabled.-->
+    <param name="considerDrop" value="false" /><!--考虑凹下去的地面,开启则将相对于地面点的高度取绝对值，-->
+    <param name="limitGroundLift" value="false" /> <!--useful if useSorting is enabled.-->
+    <param name="maxGroundLift" value="0.25" /><!--useful if useSorting is enabled.-->
+
+    <!-- dynamicObs related -->
+    <param name="clearDyObs" value="true" /><!--不清除动态物体的话，有动态物体走过的地方就走不了了-->
+    <param name="minDyObsDis" value="0.1" /><!--以下参数都是在clearDyObs的情况下才有用的-->
+    <param name="minDyObsAngle" value="0.0" />
+    <param name="minDyObsRelZ" value="-0.5" />
+    <param name="minDyObsVFOV" value="-16.0" />
+    <param name="maxDyObsVFOV" value="16.0" />
+    <param name="minDyObsPointNum" value="10" />
+
+    <param name="noDataObstacle" value="false" /><!--treate no data as obstacle-->
+    <param name="noDataBlockSkipNum" value="0" />
+    <param name="minBlockPointNum" value="1" />
+    
+    <param name="vehicleHeight" value="1.5" /><!--轮胎底部到传感器的距离，如果地面是水平的，那就是地面到传感器中心的距离-->
+    <param name="sensorOffsetX" value="0.0" /><!--传感器中心到机器人中心的距离-->
+    <param name="sensorOffsetY" value="0.0" /><!--传感器中心到机器人中心的距离-->
+    <param name="vehicleLength" value="0.7" /><!--机器人的长度-->
+    <param name="vehicleWidth" value="0.7" /><!--机器人的宽度-->
+    <param name="voxelPointUpdateThre" value="100" />
+    <param name="voxelTimeUpdateThre" value="2.0" />
+    <param name="minRelZ" value="-2.5" /><!--minRelZ以及maxRelZ限制了有效点云点的Z值范围，用于对天花板和地板进行处理-->
+    <param name="maxRelZ" value="2.5" /><!--Z值的最大最小范围由这两个值决定，但是并不等于这两个值，是有一个比例关系的，距离机器人越远，限定范围就越大，这其中考虑了坡度-->
+    <param name="disRatioZ" value="0.2" />
+  </node>
+
+</launch>

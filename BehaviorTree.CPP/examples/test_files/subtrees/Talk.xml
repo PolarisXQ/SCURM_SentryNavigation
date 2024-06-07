@@ -1,0 +1,10 @@
+<root BTCPP_format="4">
+
+    <BehaviorTree ID="SayStuff">
+        <SequenceWithMemory>
+            <Action ID="SaySomething" message="Hello World"/>
+            <Action ID="SayHello"/>
+        </SequenceWithMemory>
+    </BehaviorTree>
+
+</root>

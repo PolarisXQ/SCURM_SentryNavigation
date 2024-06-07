@@ -1,0 +1,41 @@
+tree_exec:
+  ros__parameters:
+    tree_node_model_export_path: /home/sentry_ws/src/rm_decision_cpp/behavior_tree/tree_nodes.xml
+    tree_xml_file: /home/sentry_ws/src/rm_decision_cpp/behavior_tree/RMUC_red.xml
+    tick_period_milliseconds: 100
+    groot_port: 5556
+    attack_distance: 2.0
+    vehicle_dim: 1.58
+    min_obs_num: 2
+
+# Topics2Blackboard
+
+    game_state_topic_name: "/game_state"
+    msg_timeout_s: 2.0
+    target_topic_name: "/tracker/target"
+
+# nav2pose
+    # goal_pub_topic: "goal_pose"
+    # planner_status_sub_topic: "compute_path_to_pose/_action/status"
+    # controller_status_sub_topic: "navigate_to_pose/_action/status"
+    send_goal_timeout_ms: 500
+
+# attack
+    attack_distance: 1.5 # the distance beteen enemy and robot when attack
+    vehicle_dim: 0.5 # determine the distance between two attack point candidates
+    base_frame: base_link # used for lookup transform to get robot position in map
+    # ---- use cost map ----
+    use_costmap: true
+    occ_threshold: 80 # the threshold of the costmap, if the value of the cell is larger than this, it is considered as obstacle, range from 0 to 100
+    min_obs_num: 10 # attack point candidate with more than this number of obstacles will be filtered
+    global_frame: "map" # used for transforming the target, should be the same as the frame of the costmap or terrain_map
+    cut_radius: 0.3 # enemy as center, obstacles within this radius will be ignored
+    # ---- not use cost map ----
+    # use_costmap: false
+    # obs_pcl_topic: /terrain_map
+    # global_frame: "odom"
+    # obs_intensity_threshold: 0.2
+    # cut_radius: 0.3 
+
+# spin
+    stop_spin_slope_degree_thre: 12.0

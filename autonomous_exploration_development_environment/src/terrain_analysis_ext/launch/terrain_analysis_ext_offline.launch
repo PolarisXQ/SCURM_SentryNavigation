@@ -1,0 +1,53 @@
+<launch>
+
+  <arg name="checkTerrainConn" default="false"/>
+
+  <node pkg="tf2_ros" exec="static_transform_publisher" name="fake_odom" output="screen" args="0 0 0 0 0 0 /map /sensor"/>
+
+  <node pkg="terrain_analysis_ext" exec="PCDPublisherNode" name="PCDPublisherNode" output="screen">
+    <param name="pub_full_map_topic" value="/registered_scan" />
+    <param name="map_file_path" value="/home/sentry_ws/src/FAST_LIO_SAM/PCD/GlobalMap.pcd" />
+    <param name="frame_id" value="map" />
+    <param name="period_ms" value="1" />
+    <param name="analysis_mode" value="true" /><!--!!!没有里程计信息时请开启以保证terrain_analysis运行!!!-->
+    <param name="rotate_map" value="false"/><!--!!!一般不开启!!!-->
+    <param name="merge_terrainCloudLocal" value="false" />
+  </node>
+
+  <node pkg="terrain_analysis_ext" exec="terrainAnalysisExt" name="terrainAnalysisExt" output="screen">
+    <!-- too small may induce high computation cost! -->
+    <param name="scanVoxelSize" value="0.08" />
+    <param name="decayTime" value="10.0" />
+    <param name="noDecayDis" value="0.0" />
+    <param name="clearingDis" value="100.0" />
+
+    <param name="useSorting" value="true" />
+    <param name="quantileZ" value="0.35" /><!--30°左右坡-->
+    <param name="considerDrop" value="false" /><!--考虑凹下去的地面,开启则将相对于地面点的高度取绝对值，-->
+    <param name="limitGroundLift" value="false" /> <!--useful if useSorting is enabled.-->
+    <param name="maxGroundLift" value="0.5" /><!--useful if useSorting is enabled.-->
+
+    <param name="vehicleHeight" value="1.5" />
+    <param name="sensorOffsetX" value="0.0" /><!--传感器中心到机器人中心的距离-->
+    <param name="sensorOffsetY" value="0.0" /><!--传感器中心到机器人中心的距离-->
+    <param name="vehicleLength" value="0.0" /><!--机器人的长度-->
+    <param name="vehicleWidth" value="0.0" /><!--机器人的宽度-->
+
+    <param name="voxelPointUpdateThre" value="100" />
+    <param name="voxelTimeUpdateThre" value="2.0" />
+    <param name="lowerBoundZ" value="-2.5" />
+    <param name="upperBoundZ" value="2.5" />
+    <param name="disRatioZ" value="0.2" />
+
+    <param name="checkTerrainConn" value="$(var checkTerrainConn)" />
+    <param name="terrainConnThre" value="0.5" /><!--useful if checkTerrainConn is enabled.-->
+    <param name="ceilingFilteringThre" value="2.0" /><!--useful if checkTerrainConn is enabled.-->
+    <param name="terrainUnderVehicle" value="0.0" /><!--useful if checkTerrainConn is enabled.-->
+    
+    <param name="localTerrainMapRadius" value="0.0" />
+
+    <!-- <remap from="terrain_map_ext" to="terrain_map_ext_sorted"/> -->
+  </node>
+
+  <node exec="rviz2" pkg="rviz2" args="-d $(find-pkg-share terrain_analysis_ext)/rviz/offline.rviz" output="screen"/>
+</launch>

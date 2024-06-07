@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="TEST">
+    <ReactiveSequence>
+      <Spin spin="true"/>
+    </ReactiveSequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="Spin">
+      <input_port name="spin"
+                  type="bool">spin or not.</input_port>
+    </Action>
+  </TreeNodesModel>
+
+</root>

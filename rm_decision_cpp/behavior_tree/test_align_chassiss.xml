@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="TEST">
+    <ReactiveSequence>
+      <AlignChassis angular_speed="-0.4"
+                    min_angle_diff="5"
+                    target_angle="45"/>
+    </ReactiveSequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="AlignChassis">
+      <input_port name="angular_speed"
+                  type="double"/>
+      <input_port name="min_angle_diff"
+                  type="double"/>
+      <input_port name="target_angle"
+                  type="double"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

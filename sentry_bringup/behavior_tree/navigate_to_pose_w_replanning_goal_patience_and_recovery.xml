@@ -1,0 +1,43 @@
+
+<!--
+  This BT has all the functionalities of navigate_to_pose_w_replanning_and_recovery.xml,
+  with an additional feature to cancel the control closer to the goal proximity and 
+  make the robot wait for a specific time, to see if the obstacle clears out before 
+  navigating along a significantly longer path to reach the goal location.
+-->
+<root main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <RecoveryNode number_of_retries="6" name="NavigateRecovery">
+      <PipelineSequence name="NavigateWithReplanning">
+        <RateController hz="1.0">
+          <RecoveryNode number_of_retries="1" name="ComputePathToPose">
+            <ComputePathToPose goal="{goal}" path="{path}" planner_id="GridBased"/>
+            <ClearEntireCostmap name="ClearGlobalCostmap-Context" service_name="global_costmap/clear_entirely_global_costmap"/>
+          </RecoveryNode>
+        </RateController>
+        <ReactiveSequence name="MonitorAndFollowPath">
+          <PathLongerOnApproach path="{path}" prox_len="3.0" length_factor="2.0">
+            <RetryUntilSuccessful num_attempts="1">
+              <SequenceStar name="CancelingControlAndWait">
+                <CancelControl name="ControlCancel"/>
+                <Wait wait_duration="5"/>
+              </SequenceStar>
+            </RetryUntilSuccessful>
+          </PathLongerOnApproach>
+          <RecoveryNode number_of_retries="1" name="FollowPath">
+            <FollowPath path="{path}" controller_id="FollowPath"/>
+            <ClearEntireCostmap name="ClearLocalCostmap-Context" service_name="local_costmap/clear_entirely_local_costmap"/>
+          </RecoveryNode>
+        </ReactiveSequence>
+      </PipelineSequence>
+      <ReactiveFallback name="RecoveryFallback">
+        <GoalUpdated/>
+        <RoundRobin name="RecoveryActions">
+          <BackUp backup_dist="0.3" backup_speed="0.4"/>
+          <BackUp backup_dist="0.3" backup_speed="0.4"/>
+          <Spin spin_dist="0.523"/>
+        </RoundRobin>
+      </ReactiveFallback>
+    </RecoveryNode>
+  </BehaviorTree>
+</root>

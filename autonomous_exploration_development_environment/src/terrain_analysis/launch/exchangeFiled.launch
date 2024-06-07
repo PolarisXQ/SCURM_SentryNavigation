@@ -1,0 +1,13 @@
+<launch>
+
+  <!-- <node pkg="terrain_analysis" exec="exchangeField" name="exchangeField" output="screen">
+    <remap from="input_topic" to="terrain_map"/>
+    <remap from="output_topic" to="terrain_map_exchanged"/>
+  </node> -->
+
+  <node pkg="terrain_analysis" exec="exchangeField" name="exchangeField_ext" output="screen">
+    <remap from="input_topic" to="terrain_map_ext"/>
+    <remap from="output_topic" to="terrain_map_ext_exchanged"/>
+  </node>
+
+</launch>

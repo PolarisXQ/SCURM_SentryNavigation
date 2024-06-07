@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="TEST">
+    <ReactiveSequence>
+      <Repeat num_cycles="100">
+        <AntiAutoAim speed="0.5"
+                     msec="4"/>
+      </Repeat>
+    </ReactiveSequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="AntiAutoAim">
+      <input_port name="speed"
+                  type="float"/>
+      <input_port name="msec"
+                  type="float"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

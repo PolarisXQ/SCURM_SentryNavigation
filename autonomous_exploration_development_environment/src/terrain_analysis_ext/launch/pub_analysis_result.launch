@@ -1,0 +1,13 @@
+<launch>
+  <node pkg="terrain_analysis_ext" exec="PCDPublisherNode" name="PCDPublisherNode" output="screen">
+    <param name="pub_full_map_topic" value="/terrain_map_ext" />
+    <param name="map_file_path" value="/home/sentry_ws/src/autonomous_exploration_development_environment/src/terrain_analysis_ext/maps/analysis_result0201.pcd" />
+    <param name="frame_id" value="map" />
+    <param name="period_ms" value="100" />
+    <param name="rotate_map" value="false"/>
+    <param name="analysis_mode" value="false" />
+    <param name="merge_terrainCloudLocal" value="true" />
+    <param name="localTerrainMapRadius" value="10.0" />
+  </node>
+  <!-- <node exec="rviz2" pkg="rviz2" args="-d $(find-pkg-share terrain_analysis_ext)/rviz/offline.rviz" output="screen"/> -->
+</launch>

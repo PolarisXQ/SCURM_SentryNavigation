@@ -1,0 +1,45 @@
+--------------------------------------------------------------------------------
+Loaded 72 stamps and poses from: /home/sentry_ws/src/performance_analysis/smoother/raw.txt
+Loaded 72 stamps and poses from: /home/sentry_ws/src/performance_analysis/smoother/SimpleSmoother.txt
+Loaded 72 stamps and poses from: /home/sentry_ws/src/performance_analysis/smoother/SavitzkyGolaySmoother.txt
+Loaded 72 stamps and poses from: /home/sentry_ws/src/performance_analysis/smoother/cons.txt
+--------------------------------------------------------------------------------
+name:   raw
+infos:
+        duration (s)    0.0
+        nr. of poses    72
+        path length (m) 22.347768053221973
+        pos_end (m)     [14.5500006  19.05000078  0.        ]
+        pos_start (m)   [16.05000066  7.95000034  0.        ]
+        t_end (s)       0.0
+        t_start (s)     0.0
+--------------------------------------------------------------------------------
+name:   SimpleSmoother
+infos:
+        duration (s)    0.0
+        nr. of poses    72
+        path length (m) 22.1170651832995
+        pos_end (m)     [14.5500006  19.05000078  0.        ]
+        pos_start (m)   [16.05000066  7.95000034  0.        ]
+        t_end (s)       0.0
+        t_start (s)     0.0
+--------------------------------------------------------------------------------
+name:   SavitzkyGolaySmoother
+infos:
+        duration (s)    0.0
+        nr. of poses    72
+        path length (m) 22.15716304420312
+        pos_end (m)     [14.5500006  19.05000078  0.        ]
+        pos_start (m)   [16.05000066  7.95000034  0.        ]
+        t_end (s)       0.0
+        t_start (s)     0.0
+--------------------------------------------------------------------------------
+name:   cons
+infos:
+        duration (s)    0.0
+        nr. of poses    72
+        path length (m) 22.2157628517002
+        pos_end (m)     [14.5500006  19.05000078  0.        ]
+        pos_start (m)   [16.05000066  7.95000034  0.        ]
+        t_end (s)       0.0
+        t_start (s)     0.0

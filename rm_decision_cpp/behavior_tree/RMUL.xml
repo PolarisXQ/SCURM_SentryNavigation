@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="RMUL">
+    <ReactiveSequence>
+      <Topics2Blackboard target_armor_id="{target_armor_id}"
+                         tracking="{tracking}"
+                         projectile_allowance_17mm="{projectile_sllowance}"
+                         enemy_outpost_hp="{enemy_outpost_hp}"
+                         my_base_hp="{my_base_hp}"
+                         my_outpost_hp="{my_outpost_hp}"
+                         armor_id="{armor_id}"
+                         target_position="{target_position}"
+                         enemy_base_hp="{enemy_base_hp}"
+                         hurt_type="{hurt_type}"
+                         stage_remain_time="{stage_remain_time}"
+                         game_progress="{game_progress}"
+                         current_hp="{current_hp}"/>
+      <ReactiveFallback _while="game_progress==4">
+        <Nav2Pose goal="0.47,6.5,0.0,0.0,0.0,0.0,0.0"
+                  _while="current_hp&lt;250"/>
+        <Nav2Pose name="Nav2Buff"
+                  goal="5.99,4.05,0.0,0.0,0.0,0.0,0.0"
+                  _while="stage_remain_time&lt;=250&amp;&amp;stage_remain_time&gt;=230"/>
+        <Nav2Pose name="Nav2Buff"
+                  goal="5.99,4.05,0.0,0.0,0.0,0.0,0.0"
+                  _while="stage_remain_time&lt;=140&amp;&amp;stage_remain_time&gt;=120"/>
+        <ReactiveSequence name="ATTCK!"
+                          _while="tracking==true">
+          <Attack name="Calculate Attack Pose"
+                  attack_pose="{attack_pose}"
+                  target_position="{target_position}"/>
+          <Timeout msec="1100">
+            <Nav2Pose goal="{attack_pose}"/>
+          </Timeout>
+        </ReactiveSequence>
+        <RetryUntilSuccessful num_attempts="1000">
+          <Sequence>
+            <Nav2Pose goal="6.0,1.3,0.0,0.0,0.0,0.0,0.0"
+                      _skipIf="stage_remain_time&lt;230"/>
+            <Nav2Pose goal="8.49,2.9,0.0,0.0,0.0,0.0,0.0"
+                      _skipIf="stage_remain_time&gt;=230"/>
+            <AlwaysFailure/>
+          </Sequence>
+        </RetryUntilSuccessful>
+      </ReactiveFallback>
+    </ReactiveSequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="Attack">
+      <output_port name="attack_pose"
+                   type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+      <input_port name="target_position"
+                  type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+    </Action>
+    <Action ID="Nav2Pose">
+      <input_port name="goal"
+                  type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;">goal send to navigator.</input_port>
+    </Action>
+    <Action ID="Topics2Blackboard">
+      <output_port name="target_armor_id"
+                   type="std::string"/>
+      <output_port name="tracking"
+                   type="bool"/>
+      <output_port name="projectile_allowance_17mm"
+                   type="unsigned short"/>
+      <output_port name="enemy_outpost_hp"
+                   type="unsigned short"/>
+      <output_port name="my_base_hp"
+                   type="unsigned short"/>
+      <output_port name="my_outpost_hp"
+                   type="unsigned short"/>
+      <output_port name="armor_id"
+                   type="unsigned char"/>
+      <output_port name="target_position"
+                   type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+      <output_port name="enemy_base_hp"
+                   type="unsigned short"/>
+      <output_port name="hurt_type"
+                   type="unsigned char"/>
+      <output_port name="stage_remain_time"
+                   type="unsigned short"/>
+      <output_port name="game_progress"
+                   type="unsigned char"/>
+      <output_port name="current_hp"
+                   type="unsigned short"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

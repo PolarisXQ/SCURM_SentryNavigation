@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="terrain_analysis_ext" exec="PCDSaverNode" name="PCDSaverNode" output="screen">
+    <param name="save_path" value="/home/sentry_ws/src/autonomous_exploration_development_environment/src/terrain_analysis_ext/maps/analysis_result.pcd" />
+    <param name="topic_name" value="/terrain_map_ext" />
+  </node>
+</launch>

@@ -1,0 +1,28 @@
+# Terrain Analysis
+
+- scanVoxelSize: the size of the voxel used for scanning the terrain.
+- decayTime: the time it takes for a voxel to decay.
+- noDecayDis: the distance at which a voxel will not decay.
+- clearingDis: the distance at which a voxel will be cleared.
+- clearingCloud: a boolean flag indicating whether to clear the cloud.
+- useSorting: ??????
+- quantileZ: the quantile value used for sorting.????
+- considerDrop: ???
+- limitGroundLift: a boolean flag indicating whether to limit ground lift.
+- maxGroundLift: the maximum ground lift allowed.[useful only if useSorting is enabled]
+- clearDyObs: a boolean flag indicating whether to clear dynamic obstacles.
+- minDyObsDis: the minimum distance for dynamic obstacles.
+- minDyObsAngle: the minimum angle for dynamic obstacles.
+- minDyObsRelZ: the minimum relative Z value for dynamic obstacles.
+- minDyObsVFOV: the minimum vertical field of view for dynamic obstacles.
+- maxDyObsVFOV: the maximum vertical field of view for dynamic obstacles.
+- minDyObsPointNum: the minimum number of points for dynamic obstacles.
+- noDataObstacle: a boolean flag indicating whether to consider no data as obstacles.
+- noDataBlockSkipNum: the number of blocks to skip for no data.
+- minBlockPointNum: the minimum number of points for a block.
+- vehicleHeight: the height of the vehicle.
+- voxelPointUpdateThre: the threshold for updating voxel points.
+- voxelTimeUpdateThre: the threshold for updating voxel time.
+- minRelZ: the minimum relative Z value.
+- maxRelZ: the maximum relative Z value.
+- disRatioZ: the distance ratio for Z value.

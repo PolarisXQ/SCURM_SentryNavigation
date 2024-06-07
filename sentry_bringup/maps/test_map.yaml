@@ -1,0 +1,7 @@
+image: test_map.png
+mode: trinary
+resolution: 0.1
+origin: [-18.8, -21, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25

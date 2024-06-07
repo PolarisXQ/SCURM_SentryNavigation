@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="RMUC_blue2">
+    <ReactiveSequence>
+      <Topics2Blackboard target_armor_id="{target_armor_id}"
+                         tracking="{tracking}"
+                         projectile_allowance_17mm="{projectile_sllowance}"
+                         enemy_outpost_hp="{enemy_outpost_hp}"
+                         my_base_hp="{my_base_hp}"
+                         my_outpost_hp="{my_outpost_hp}"
+                         armor_id="{armor_id}"
+                         target_position="{target_position}"
+                         enemy_base_hp="{enemy_base_hp}"
+                         hurt_type="{hurt_type}"
+                         stage_remain_time="{stage_remain_time}"
+                         game_progress="{game_progress}"
+                         current_hp="{current_hp}"/>
+      <Spin spin="true"
+            _while="game_progress==4 &amp;&amp; my_outpost_hp&lt;=0"/>
+      <Spin spin="false"
+            _while="game_progress!=4 || my_outpost_hp&gt;0"/>
+      <ReactiveFallback _while="game_progress==4 &amp;&amp; current_hp&gt;0">
+        <IfThenElse _while="current_hp&lt;200">
+          <Nav2Pose name="get supply"
+                    goal="18.48,10.18,0.0,0.0,0.0,0.0,0.0"/>
+          <Sleep msec="5000"/>
+        </IfThenElse>
+        <Sequence _while="my_outpost_hp&lt;600">
+          <Nav2Pose name="Stay at Patrol Zone"
+                    goal="14.89,4.41,0.0,0.0,0.0,0.0,0.0"/>
+          <AntiAutoAim speed="0.8"
+                       msec="4"/>
+        </Sequence>
+        <ReactiveSequence name="ATTCK"
+                          _while="tracking==true &amp;&amp; target_armor_id!=&quot;outpost&quot;">
+          <Attack name="Calculate Attack Pose"
+                  attack_pose="{attack_pose}"
+                  target_position="{target_position}"/>
+          <Nav2Pose goal="{attack_pose}"/>
+        </ReactiveSequence>
+        <Sequence _while="tracking==false">
+          <Nav2Pose name="Patrol"
+                    goal="1.0,7.05,0.0,0.0,0.0,0.0,0.0"/>
+        </Sequence>
+      </ReactiveFallback>
+    </ReactiveSequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel>
+    <Action ID="AntiAutoAim">
+      <input_port name="speed"
+                  type="float"/>
+      <input_port name="msec"
+                  type="float"/>
+    </Action>
+    <Action ID="Attack">
+      <output_port name="attack_pose"
+                   type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+      <input_port name="target_position"
+                  type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+    </Action>
+    <Action ID="Nav2Pose">
+      <input_port name="goal"
+                  type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;">goal send to navigator.</input_port>
+    </Action>
+    <Action ID="Spin">
+      <input_port name="spin"
+                  type="bool">spin or not.</input_port>
+    </Action>
+    <Action ID="Topics2Blackboard">
+      <output_port name="target_armor_id"
+                   type="std::string"/>
+      <output_port name="tracking"
+                   type="bool"/>
+      <output_port name="projectile_allowance_17mm"
+                   type="unsigned short"/>
+      <output_port name="enemy_outpost_hp"
+                   type="unsigned short"/>
+      <output_port name="my_base_hp"
+                   type="unsigned short"/>
+      <output_port name="my_outpost_hp"
+                   type="unsigned short"/>
+      <output_port name="armor_id"
+                   type="unsigned char"/>
+      <output_port name="target_position"
+                   type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+      <output_port name="enemy_base_hp"
+                   type="unsigned short"/>
+      <output_port name="hurt_type"
+                   type="unsigned char"/>
+      <output_port name="stage_remain_time"
+                   type="unsigned short"/>
+      <output_port name="game_progress"
+                   type="unsigned char"/>
+      <output_port name="current_hp"
+                   type="unsigned short"/>
+    </Action>
+  </TreeNodesModel>
+
+</root>

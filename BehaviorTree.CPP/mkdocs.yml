@@ -1,0 +1,58 @@
+site_name: BehaviorTree.CPP
+site_description: Introduction to Behavior Trees
+site_author: Davide Faconti
+
+copyright: 'Copyright &copy; 2018-2022 Davide Faconti, Eurecat'
+
+theme:
+  name: 'material'
+  language: en
+  logo: 'images/BT.png'
+  feature:
+    tabs: true
+  palette:
+    primary: indigo
+    accent: Deep Purple
+  font:
+    text: Ubuntu
+    code: Roboto Mono
+
+repo_name: 'BehaviorTree.CPP'
+repo_url: 'https://github.com/BehaviorTree/BehaviorTree.CPP'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - codehilite:
+      guess_lang: true
+
+
+nav:
+    - Home: index.md
+
+    - Learn the basics:
+      - Introduction to BT: BT_basics.md
+      - Getting started:    getting_started.md
+      - Sequence Nodes:     SequenceNode.md
+      - Fallback Nodes:     FallbackNode.md
+      - Decorators Nodes:   DecoratorNode.md
+      - The XML format:     xml_format.md
+
+    - Tutorials:
+
+      - "Summary":                             tutorials_summary.md
+      - "Tutorial 1: Create a Tree":           tutorial_01_first_tree.md
+      - "Tutorial 2: Basic Ports":             tutorial_02_basic_ports.md
+      - "Tutorial 3: Generic ports":           tutorial_03_generic_ports.md
+      - "Tutorial 4: Reactive Trees":          tutorial_04_sequence.md
+      - "Tutorial 5: Subtrees and Loggers":    tutorial_05_subtrees.md
+      - "Tutorial 6: Ports remapping":         tutorial_06_subtree_ports.md
+      - "Tutorial 7: Load multiple XMLs":      tutorial_07_multiple_xml.md
+      - "Tutorial 8: Additional arguments":    tutorial_08_additional_args.md
+      - "Tutorial 9: Coroutines":              tutorial_09_coroutines.md
+
+    - Application Notes:
+      - "Concurrency and Asynchronous Nodes": asynchronous_nodes.md
+      - "How to Wrap legacy code": example_01_legacy_wrap.md
+

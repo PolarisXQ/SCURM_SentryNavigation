@@ -1,0 +1,16 @@
+<root BTCPP_format="4">
+
+    <include path="Check.xml" />
+    <include path="subtrees/Talk.xml" />
+
+    <BehaviorTree ID="BehaviorTree">
+        <Sequence>
+            <CheckStatus/>
+            <OpenGripper/>
+            <CloseGripper/>
+            <SayStuff/>
+        </Sequence>
+    </BehaviorTree>
+
+</root>
+

@@ -1,0 +1,7 @@
+<launch>
+
+  <node pkg="sensor_scan_generation" exec="sensorScanGeneration" name="sensorScanGeneration" output="screen">
+    <remap from="/registered_scan" to="/terrain_map_ext_exchanged"/>
+  </node>
+
+</launch>

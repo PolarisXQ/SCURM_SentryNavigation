@@ -1,0 +1,90 @@
+// GUIDE
+// https://code.visualstudio.com/docs/devcontainers/create-dev-container#_set-up-a-folder-to-run-in-a-container
+{
+    "name": "sentry_dev",
+    "image":"rm_sentry:latest", // change this to your image name
+    "runArgs": [
+        "--ipc=host", // shared memory transport with host, e.g. rviz GUIs
+        "--network=host", // network access to host interfaces, e.g. eth0
+        "--pid=host", // DDS discovery with host, without --network=host
+        "--privileged", // device access to host peripherals, e.g. USB
+        // "--security-opt=seccomp=unconfined", // enable debugging, e.g. gdb
+        "--gpus=all"
+    ],
+    "workspaceFolder": "/home/sentry_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder}/src,type=bind",
+    // "onCreateCommand": ".devcontainer/on-create-command.sh",
+    // "updateContentCommand": ".devcontainer/update-content-command.sh",
+    // "postCreateCommand": ".devcontainer/post-create-command.sh",
+    "remoteEnv": {
+        "DISPLAY": "host.docker.internal:0.0",
+        "NVIDIA_DRIVER_CAPABILITIES":"all"
+    //     "OVERLAY_MIXINS": "release ccache lld",
+    //     "CCACHE_DIR": "/tmp/.ccache"
+    },
+    // "mounts": [
+    //     {
+    //         "source": "ccache-${devcontainerId}",
+    //         "target": "/tmp/.ccache",
+    //         "type": "volume"
+    //     },
+    //     {
+    //         "source": "overlay-${devcontainerId}",
+    //         "target": "/opt/overlay_ws",
+    //         "type": "volume"
+    //     }
+    // ],
+    // "features": {
+    //     // "ghcr.io/devcontainers/features/desktop-lite:1": {},
+    //     "ghcr.io/devcontainers/features/github-cli:1": {},
+    //     "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+	// 		"upgradePackages": true,
+	// 		"packages": ""
+	// 	}
+    // },
+    "customizations": {
+        // "codespaces": {
+        //     "openFiles": [
+        //         "doc/development/codespaces.md"
+        //     ]
+        // },
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                // gadget
+                "aaron-bond.better-comments",
+                "PKief.material-icon-theme",
+                // C++
+                "ms-vscode.cpptools",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cpptools-themes",
+                // python
+                "ms-python.vscode-pylance",
+                "ms-python.python",
+                // CMake
+                "twxs.cmake",
+                "ms-vscode.cmake-tools",
+                // Github Copilot
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "GitHub.copilot-labs",
+                // note
+                "VisualStudioExptTeam.vscodeintellicode",
+                "VisualStudioExptTeam.intellicode-api-usage-examples",
+                // XML
+                "DotJoshJohnson.xml",
+                // PCD viewer
+                "tatsy.vscode-3d-preview",
+                // nav2 default
+                // "althack.ament-task-provider",
+                // "eamodio.gitlens",
+                // "esbenp.prettier-vscode",
+                // "ms-iot.vscode-ros",
+                // "streetsidesoftware.code-spell-checker",
+                // Docker
+                "ms-azuretools.vscode-docker"
+
+            ]
+        }
+    }
+}

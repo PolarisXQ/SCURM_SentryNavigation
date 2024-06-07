@@ -1,0 +1,26 @@
+<launch>
+  <node pkg="terrain_analysis_ext" exec="pathNorm" name="pathNorm" output="screen">
+    <remap from="/way_point" to="/plan"/>
+    <!-- <remap from="/terrain_map_ext" to="/terrain"/> -->
+    <param name="map_file_path" value="/home/sentry_ws/src/FAST_LIO_SAM/PCD/GlobalMap.pcd" />
+    <param name="vehicle_dim_Y" value="0.3" />
+    <param name="vehicle_dim_X" value="0.3" />
+    <!-- TODO -->
+    <param name="Z_offset" value="0.8" />
+    <param name="remove_thre" value="0.01" />
+    <param name="min_stair_height" value="0.1" />
+    <param name="use_ror" value="true" />
+    <param name="ror_radius" value="0.2" />
+    <param name="remove_ceiling" value="true"/>
+    <param name="ceiling_height" value="2.0"/>
+    <param name="speed_up_slope_degree_thre" value="14.0"/>
+    <param name="max_speed_up_slope_degree" value="30.0"/>
+    <param name="speed_up_max_rate" value="1.5"/>
+    <param name="base_frame" value="chassis_link"/>
+    <param name="global_frame" value="map"/>
+    <!-- <param name="path_angle_enable_param_name" value="/controller_server:FollowPath.PathAngleCritic.enabled"/> -->
+    <!-- TODO -->
+    <param name="speedup_duration" value="0.5"/>
+  </node>
+  <!-- <node exec="rviz2" pkg="rviz2" args="-d $(find-pkg-share terrain_analysis_ext)/rviz/offline.rviz" output="screen"/> -->
+</launch>

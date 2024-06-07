@@ -1,0 +1,48 @@
+<root BTCPP_format="4">
+    <TreeNodesModel>
+        <Action ID="AlignChassis">
+            <input_port name="angular_speed" type="double"/>
+            <input_port name="min_angle_diff" type="double"/>
+            <input_port name="target_angle" type="double"/>
+        </Action>
+        <Action ID="AntiAutoAim">
+            <input_port name="speed" type="float"/>
+            <input_port name="msec" type="float"/>
+        </Action>
+        <Action ID="Attack">
+            <output_port name="attack_pose" type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+            <input_port name="target_position" type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+        </Action>
+        <Action ID="ControlGimbal">
+            <input_port name="goal" type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;">goal pose in map frame.</input_port>
+        </Action>
+        <Action ID="Nav2Pose">
+            <input_port name="goal" type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;">goal send to navigator.</input_port>
+        </Action>
+        <Action ID="SentryCmd">
+            <input_port name="buy_hp_times" type="unsigned char"/>
+            <input_port name="buy_projectile_times" type="unsigned char"/>
+            <input_port name="buy_projectile_allowance" type="unsigned short"/>
+            <input_port name="buy_resurrection_en" type="bool"/>
+            <input_port name="resurrection_en" type="bool"/>
+        </Action>
+        <Action ID="Spin">
+            <input_port name="spin" type="bool">spin or not.</input_port>
+        </Action>
+        <Action ID="Topics2Blackboard">
+            <output_port name="target_armor_id" type="std::string"/>
+            <output_port name="tracking" type="bool"/>
+            <output_port name="projectile_allowance_17mm" type="unsigned short"/>
+            <output_port name="enemy_outpost_hp" type="unsigned short"/>
+            <output_port name="my_base_hp" type="unsigned short"/>
+            <output_port name="my_outpost_hp" type="unsigned short"/>
+            <output_port name="armor_id" type="unsigned char"/>
+            <output_port name="target_position" type="geometry_msgs::msg::PoseStamped_&lt;std::allocator&lt;void&gt; &gt;"/>
+            <output_port name="enemy_base_hp" type="unsigned short"/>
+            <output_port name="hurt_type" type="unsigned char"/>
+            <output_port name="stage_remain_time" type="unsigned short"/>
+            <output_port name="game_progress" type="unsigned char"/>
+            <output_port name="current_hp" type="unsigned short"/>
+        </Action>
+    </TreeNodesModel>
+</root>
