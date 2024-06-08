@@ -12,8 +12,6 @@
 
 算法框架和思路详见技术报告
 
-作者：夏旗以及所有在开发过程中给予各种支持的前辈&同学们🌹🌹🌹
-
 Docker镜像使用方法参阅[DevcontainterGuide](./DevcontainterGuide.md)
 
 ## 包说明
