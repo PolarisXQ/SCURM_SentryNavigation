@@ -1,5 +1,4 @@
 # rm_decision
-
 a robot decision module base on BehaviorTree.CPP and ROS2
 
 ## 1. Install BehaviorTree.CPP

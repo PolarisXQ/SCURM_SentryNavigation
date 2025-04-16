@@ -13,6 +13,11 @@
     <include path="test_nav_att.xml"/>
     <!-- Description of Node Models (used by Groot) -->
     <TreeNodesModel>
+        <Action ID="AlignChassis">
+            <input_port name="angular_speed" type="double"/>
+            <input_port name="min_angle_diff" type="double"/>
+            <input_port name="target_angle" type="double"/>
+        </Action>
         <Action ID="AntiAutoAim">
             <input_port name="speed" type="float"/>
             <input_port name="msec" type="float"/>

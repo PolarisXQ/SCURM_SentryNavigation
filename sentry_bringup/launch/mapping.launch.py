@@ -53,16 +53,17 @@ def generate_launch_description():
   )
   
   # fast-lio localization   
-  fast_lio_sam_param = os.path.join(
-      config_path, 'fast_lio_sam_mapping_param.yaml')
-  fast_lio_sam_node = Node(
-			package='fast_lio_sam',
-			executable='fastlio_sam_mapping',
-			name='fastlio_sam_mapping',
-			output='screen',
-			parameters=[fast_lio_sam_param],
-			remappings=[('/Odometry','/state_estimation')]
-  )
+  fast_lio_param = os.path.join(
+      config_path, 'fast_lio_mapping_param.yaml')
+  fast_lio_node = Node(
+        package='fast_lio',
+        executable='fastlio_mapping',
+        parameters=[
+          fast_lio_param
+        ],
+        output='screen',
+        remappings=[('/Odometry','/state_estimation')]
+    )
 
   start_octomap_server = IncludeLaunchDescription(
     PythonLaunchDescriptionSource([os.path.join(
@@ -81,7 +82,7 @@ def generate_launch_description():
   delayed_start_mapping = TimerAction(
     period=8.0,
     actions=[
-      fast_lio_sam_node,
+      fast_lio_node,
       start_octomap_server
     ]
   )
@@ -93,7 +94,7 @@ def generate_launch_description():
   # ld.add_action(fake_joint_node)
   # ld.add_action(twist_transformer_node)
   ld.add_action(rot_imu)
-  # ld.add_action(sentry_description)
+  ld.add_action(sentry_description)
   ld.add_action(mid360_node)
   ld.add_action(start_rviz)
   ld.add_action(delayed_start_mapping)

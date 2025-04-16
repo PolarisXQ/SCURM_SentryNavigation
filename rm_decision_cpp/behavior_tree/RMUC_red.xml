@@ -19,13 +19,10 @@
                          game_progress="{game_progress}"
                          current_hp="{current_hp}"/>
       <Spin spin="true"
-            _while="game_progress==4 &amp;&amp; arrive_home"/>
-      <Spin spin="false"
+            _while="game_progress==4"/>
+      <Spin spin="true"
             _while="game_progress!=4 || my_outpost_hp&gt;0"/>
       <ReactiveFallback _while="game_progress==4 &amp;&amp; current_hp&gt;0">
-        <RunOnce then_skip="true">
-          <Sleep msec="5000"/>
-        </RunOnce>
         <IfThenElse _while="current_hp&lt;200">
           <Nav2Pose name="get supply"
                     goal="-4.29,-4.55,0.0,0.0,0.0,0.0,0.0"/>
@@ -50,7 +47,7 @@
                     goal="9.45,2.08,0.0,0.0,0.0,0.0,0.0"/>
           <Nav2Pose name="smash the outpost"
                     goal="8.13,4.83,0.0,0.0,0.0,0.0,0.0"/>
-          <ControlGimbal goal="9.51,7.89,0.5,0.0,0.0,0.0,0.0"/>
+          <ControlGimbal goal="9.51,7.89,0.35,0.0,0.0,0.0,0.0"/>
         </ReactiveSequence>
         <ReactiveSequence name="ATTCK"
                           _while="tracking==true &amp;&amp; target_armor_id!=&apos;2&apos;">
@@ -61,7 +58,7 @@
         </ReactiveSequence>
         <Sequence _while="tracking==false">
           <Nav2Pose name="Patrol"
-                    goal="14.3,0.45,0.0,0.0,0.0,0.0,0.0"/>
+                    goal="0.0,0.0,0.0,0.0,0.0,0.0,0.0"/>
         </Sequence>
       </ReactiveFallback>
     </ReactiveSequence>

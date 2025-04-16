@@ -8,8 +8,6 @@
 
 2. 改进navigation2的故障恢复行为，卡住时机器人会向无碰撞的方向运动。
 
-3. 实现底盘和坡面对齐(comming soon)
-
 算法框架和思路详见技术报告
 
 Docker镜像使用方法参阅[DevcontainterGuide](./DevcontainterGuide.md)
@@ -18,15 +16,19 @@ Docker镜像使用方法参阅[DevcontainterGuide](./DevcontainterGuide.md)
 
 | Package Name | Description |
 |--------------|-------------|
-| ✅auto_aim_interfaces |  |
-| ✅[autonomous_exploration_development_environment](https://github.com/HongbiaoZ/autonomous_exploration_development_environment) | <span style="color:red">**MODIFIED**</span> development env for cmu-series planner |
+| ✅auto_aim_interfaces | 自瞄接口 |
+| ✅[autonomous_exploration_development_environment](https://github.com/HongbiaoZ/autonomous_exploration_development_environment) | 地形分析包terrain_analysis和terrain_analysis_ext，其他的是小工具无关紧要 |
 | ✅[BehaviourTree.CPP](https://github.com/BehaviorTree/BehaviorTree.CPP) | <span style="color:red">**MODIFIED**</span> BehaviourTree lib |
-| ✅cmd_chassis | - cmd_vel to chassis_cmd for communication and motion type of the chassis <br> - exexute rotation command in chassis_link since the true value is unavailable |
-| ✅control_panel | a simple Qt GUI for simulating referee system |
-| ✅FAST_LIO | fastlio mapping |
-| ✅livox_ros_driver2 | Driver for livox lidar |
-| ✅nav2_plugins <br> - behavior_ext_plugins <br> - costmap_intensity <br> - velocity_smoother_ext | self defined nav2 plugins <br> - an enhenced back_up action that move toward free space <br> - 2 costmap_2d layer that use intensity filed of pointcloud msg rather than height (use with terrain analysis in autonomous_exploration_development_environment) <br> - an enhenced velocity smoother that increase the speed on slope automatically (use with terrain analysis-pathNorm) |
-| ✅rm_decision_cpp | sentry desicion module based on BehaviourTree.CPP, implement nav2pose, topics2blackboard, anti_autoaim, attack etc. behaviours. |
+| ✅cmd_chassis | twist2chassis_cmd：将twist加上底盘的控制方式（如是否小陀螺），发出到串口接收的话题；其他的可以先不管 |
+| ✅control_panel | 模仿裁判系统发消息 |
+| ✅FAST_LIO | 修改版fastlio，具备建图和重定位功能（须配合icp_relocalizatiion使用） |
+| ✅icp_relocalization | 基于icp实现的重定位，须配合修改版FAST_LIO使用 |
+| ✅livox_ros_driver2 | livox雷达驱动 |
+| ✅nav2_plugins <br> - behavior_ext_plugins <br> - costmap_intensity <br> - nav2_mppi_controller_ext | Costume nav2 plugins <br> - an enhenced back_up action that move toward free space <br> - 2 costmap_2d layer that use intensity filed of pointcloud msg rather than height (use with terrain analysis in autonomous_exploration_development_environment) |
+| ✅rm_decision_cpp | 烧饼决策系统 |
+| ✅rm_hardware_driver | 硬件驱动 |
+| ✅sentry_bringup | 哨兵启动文件 |
+| ✅sentry_description | 烧饼urdf |
 
 ## LAUNCH
 

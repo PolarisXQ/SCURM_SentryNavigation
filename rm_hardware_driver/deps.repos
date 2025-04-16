@@ -1,0 +1,13 @@
+repositories:
+  rmoss_interfaces:
+    type: git
+    url: https://github.com/robomaster-oss/rmoss_interfaces.git
+    version: humble
+  rmoss_core:
+    type: git
+    url: https://github.com/robomaster-oss/rmoss_core.git
+    version: humble
+  rmoss_mindvision_driver:
+    type: git
+    url: https://github.com/robomaster-oss/rmoss_mindvision_driver.git
+    version: humble

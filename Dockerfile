@@ -50,8 +50,8 @@ RUN apt-get update && apt-get install -y \
     # ros-$ROS_DISTRO-grid-map-sdf ros-$ROS_DISTRO-grid-map-visualization \
     # for control
     ros-$ROS_DISTRO-teleop-twist-keyboard ros-$ROS_DISTRO-serial-driver \
-    # for lio-sam
-    libgeographic-dev ros-humble-gtsam \
+    # # for lio-sam
+    # libgeographic-dev ros-humble-gtsam \
     # visualization
     ros-$ROS_DISTRO-foxglove-bridge ros-$ROS_DISTRO-foxglove-msgs \
     # driver 
@@ -80,6 +80,9 @@ ADD livox_ros_driver2 /home/sentry_ws/src/livox_ros_driver2
 ADD nav2_plugins /home/sentry_ws/src/nav2_plugins
 ADD performance_analysis /home/sentry_ws/src/performance_analysis
 ADD rm_decision_cpp /home/sentry_ws/src/rm_decision_cpp
+ADD rm_hardware_driver /home/sentry_ws/src/rm_hardware_driver
+# ADD rmoss_core /home/sentry_ws/src/rmoss_core
+# ADD rmoss_interfaces /home/sentry_ws/src/rmoss_interfaces
 ADD sentry_bringup /home/sentry_ws/src/sentry_bringup
 ADD .git/ /home/sentry_ws/src/.git/
 ADD README.md /home/sentry_ws/src/README.md

@@ -84,6 +84,6 @@ def generate_launch_description():
 
     ld.add_action(start_relocalization)
     ld.add_action(delayed_start_navigation)
-    ld.add_action(delayed_start_decision)
+    ld.add_action(delayed_start_decision)  # 不用自动决策的时候这个不用开
 
     return ld

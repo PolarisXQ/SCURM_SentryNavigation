@@ -1,0 +1,5 @@
+bool resurrection_en
+bool buy_resurrection_en
+uint16 buy_projectile_allowance
+uint16 buy_projectile_times
+uint16 buy_hp_times

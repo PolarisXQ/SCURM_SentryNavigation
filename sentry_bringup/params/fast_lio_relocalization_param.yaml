@@ -1,7 +1,7 @@
 /**:
     ros__parameters:
         locate_in_prior_map: true
-        prior_map_path: "/home/sentry_ws/src/FAST_LIO_SAM/PCD/GlobalMap.pcd"
+        prior_map_path: "/home/sentry_ws/test.pcd"
         feature_extract_enable: false
         point_filter_num: 3
         max_iteration: 3

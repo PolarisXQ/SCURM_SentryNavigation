@@ -33,7 +33,7 @@ def generate_launch_description():
     package='cmd_chassis',
     executable='twist_transformer',
     output='screen',
-        arguments=['--ros-args', '-p', 'chassis_frame:=base_link'],
+        arguments=['--ros-args', '-p', 'chassis_frame:=chassis_link'],
   )
 
   rot_imu=Node(
@@ -86,7 +86,7 @@ def generate_launch_description():
           {'max_correspondence_distance':0.1},
           {'RANSAC_outlier_rejection_threshold':0.5},
           # {'map_path':'/home/sentry_ws/src/sentry_bringup/maps/CC#0.pcd'},
-          {'map_path':'/home/sentry_ws/src/FAST_LIO_SAM/PCD/GlobalMap.pcd'},
+          {'map_path':'/home/sentry_ws/test.pcd'},
           {'fitness_score_thre':0.2}, # 是最近点距离的平均值，越小越严格
           {'converged_count_thre':40}, # pcl pub at 20 hz, 2s
           {'pcl_type':'livox'},
@@ -127,11 +127,11 @@ def generate_launch_description():
 
   # ld.add_action(rm_base_node)
   ld.add_action(twist2chassis_cmd_node)
-  # ld.add_action(fake_joint_node)
+  ld.add_action(fake_joint_node)
   ld.add_action(twist_transformer_node)
   ld.add_action(rot_imu)
   ld.add_action(mid360_node)
-  # ld.add_action(sentry_description)
+  ld.add_action(sentry_description) # 没接自瞄的时候这个要开
   ld.add_action(map_odom_trans)
   # ld.add_action(icp_node)
   ld.add_action(start_rviz)
