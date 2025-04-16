@@ -24,7 +24,7 @@ Docker镜像使用方法参阅[DevcontainterGuide](./DevcontainterGuide.md)
 | ✅FAST_LIO | 修改版fastlio，具备建图和重定位功能（须配合icp_relocalizatiion使用） |
 | ✅icp_relocalization | 基于icp实现的重定位，须配合修改版FAST_LIO使用 |
 | ✅livox_ros_driver2 | livox雷达驱动 |
-| ✅nav2_plugins <br> - behavior_ext_plugins <br> - costmap_intensity <br> - nav2_mppi_controller_ext | Costume nav2 plugins <br> - an enhenced back_up action that move toward free space <br> - 2 costmap_2d layer that use intensity filed of pointcloud msg rather than height (use with terrain analysis in autonomous_exploration_development_environment) |
+| ✅nav2_plugins <br> - behavior_ext_plugins <br> - costmap_intensity | Costume nav2 plugins <br> - an enhenced back_up action that move toward free space <br> - 2 costmap_2d layer that use intensity filed of pointcloud msg rather than height (use with terrain analysis in autonomous_exploration_development_environment) |
 | ✅rm_decision_cpp | 烧饼决策系统 |
 | ✅rm_hardware_driver | 硬件驱动 |
 | ✅sentry_bringup | 哨兵启动文件 |

@@ -134,7 +134,7 @@ controller_server:
       xy_goal_tolerance: 0.3
       yaw_goal_tolerance: 3.14
     FollowPath:    
-      plugin: "nav2_mppi_controller::MPPIControllerExt"
+      plugin: "nav2_mppi_controller::MPPIController"
       #param 
       adjustThre: 14.0 # slopeDegree larger than this value will trigger the adjust heading behavior
       minAngleDiff: 365.0 # if the angle difference is larger than this value, the robot will continue to adjust heading
