@@ -88,9 +88,6 @@ ADD .git/ /home/sentry_ws/src/.git/
 ADD README.md /home/sentry_ws/src/README.md
 ADD DevcontainterGuide.md /home/sentry_ws/src/DevcontainterGuide.md
 
-RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
-    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select behavior_ext_plugins
-
 # build
 RUN rosdepc init && rosdepc update && \
     . /opt/ros/$ROS_DISTRO/setup.sh && \
@@ -100,6 +97,7 @@ RUN rosdepc init && rosdepc update && \
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
     colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select livox_ros_driver2 rm_interfaces behaviortree_cpp
 
+# build the rest
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && . /home/sentry_ws/install/setup.sh && \
     colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 

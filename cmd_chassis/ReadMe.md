@@ -46,12 +46,6 @@ ros2 run key_teleop key_teleop
 ros2 run teleop_twist_joy teleop_node
 ```
 
-```bash
-# Terminal3
-. install/setup.bash
-ros2 launch rm_base rm_base.launch.py
-```
-
 ### 里程计，速度标定
 
 ```bash

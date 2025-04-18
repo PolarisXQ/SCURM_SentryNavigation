@@ -11,11 +11,6 @@ def generate_launch_description():
 
   config_path = os.path.join(
       get_package_share_directory('sentry_bringup'), 'params') 
-
-  rm_base_node=IncludeLaunchDescription(
-      PythonLaunchDescriptionSource([os.path.join(
-          get_package_share_directory('rm_base'), 'launch', 'rm_base.launch.py')])
-  )
   
   twist2chassis_cmd_node=Node(
     package='cmd_chassis',
@@ -86,8 +81,8 @@ def generate_launch_description():
           {'max_correspondence_distance':0.1},
           {'RANSAC_outlier_rejection_threshold':0.5},
           # {'map_path':'/home/sentry_ws/src/sentry_bringup/maps/CC#0.pcd'},
-          {'map_path':'/home/sentry_ws/test.pcd'},
-          {'fitness_score_thre':0.2}, # 是最近点距离的平均值，越小越严格
+          {'map_path':'/home/sentry_ws/src/sentry_bringup/maps/GlobalMap.pcd'},
+          {'fitness_score_thre':0.9}, # 是最近点距离的平均值，越小越严格
           {'converged_count_thre':40}, # pcl pub at 20 hz, 2s
           {'pcl_type':'livox'},
       ],
@@ -125,7 +120,6 @@ def generate_launch_description():
 
   ld = LaunchDescription()
 
-  # ld.add_action(rm_base_node)
   ld.add_action(twist2chassis_cmd_node)
   ld.add_action(fake_joint_node)
   ld.add_action(twist_transformer_node)

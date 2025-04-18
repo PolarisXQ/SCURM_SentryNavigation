@@ -11,11 +11,6 @@ def generate_launch_description():
 
   config_path = os.path.join(
       get_package_share_directory('sentry_bringup'), 'params') 
-
-  rm_base_node=IncludeLaunchDescription(
-      PythonLaunchDescriptionSource([os.path.join(
-          get_package_share_directory('rm_base'), 'launch', 'rm_base.launch.py')])
-  )
   
   twist2chassis_cmd_node=Node(
     package='cmd_chassis',
@@ -89,10 +84,9 @@ def generate_launch_description():
 
   ld = LaunchDescription()
 
-  # ld.add_action(rm_base_node)
   ld.add_action(twist2chassis_cmd_node)
-  # ld.add_action(fake_joint_node)
-  # ld.add_action(twist_transformer_node)
+  ld.add_action(fake_joint_node)
+  ld.add_action(twist_transformer_node)
   ld.add_action(rot_imu)
   ld.add_action(sentry_description)
   ld.add_action(mid360_node)

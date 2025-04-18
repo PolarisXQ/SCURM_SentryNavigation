@@ -28,7 +28,7 @@ def generate_launch_description():
                 {'solver_max_iter':75},
                 {'max_correspondence_distance':0.1},
                 {'RANSAC_outlier_rejection_threshold':1.0},
-                {'map_path':'/home/sentry_ws/test.pcd'},
+                {'map_path':'/home/sentry_ws/src/sentry_bringup/maps/GlobalMap.pcd'},
                 {'fitness_score_thre':0.1}, # 是最近点距离的平均值，越小越严格
                 {'converged_count_thre':50},
                 {'pcl_type':'livox'},

@@ -62,7 +62,7 @@ process pcd file
 - select the processed pointcloud from last step, then tools->segmentation->Label Connected Components, set the parameters and apply
 - pick out the CC#0(ususally this one), then tools->Other->Remove duplicate points, keep 1 point per 0.01-0.1m to reduce the size of the pointcloud
 - select the processed pointcloud, then file->save as, select .pcd format
-- replace the original pcd file with the processed one. Globally seach and replace '/home/sentry_ws/test.pcd' with '/path/to/your/map'
+- replace the original pcd file with the processed one. Globally seach and replace '/home/sentry_ws/src/sentry_bringup/maps/GlobalMap.pcd' with '/path/to/your/map'
 
 ### LAUNCH ALL
 
