@@ -48,9 +48,7 @@ ros2 launch sentry_bringup mapping.launch.py
 # occupancy grid map
 ros2 run nav2_map_server map_saver_cli -t /projected_map -f test_map --fmt png
 # save pcd
-ros2 service call /fast_lio_sam/save_map fast_lio_sam/srv/SaveMap
-# or set the resolution by adding 
-ros2 service call /fast_lio_sam/save_map fast_lio_sam/srv/SaveMap "{resolution: 0.0}"
+ros2 service call /map_save std_srvs/srv/Trigger
 ```
 
 - then terminate all nodes, pcd file will be saved in /PCD/scans.pcd
