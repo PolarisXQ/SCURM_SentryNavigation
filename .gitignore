@@ -7,4 +7,4 @@ pointcloud_to_laserscan
 rosbag*
 Lidar_IMU_Localization*
 LIO-SAM*
-sentry_description
+# sentry_description

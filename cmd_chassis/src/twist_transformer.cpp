@@ -15,7 +15,7 @@ public:
         this->get_parameter<std::string>("chassis_frame", chassis_frame_);
         cmd_in_yaw_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("/cmd_vel_in_yaw", 10);
         subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(
-            "/cmd_vel", 10, std::bind(&TwistTransformer::listener_callback, this, std::placeholders::_1));
+            "/cmd_vel", 20, std::bind(&TwistTransformer::listener_callback, this, std::placeholders::_1));
     }
 
 private:
@@ -24,7 +24,7 @@ private:
         geometry_msgs::msg::TransformStamped transformStamped;
         try
         {
-            transformStamped = tfBuffer.lookupTransform(chassis_frame_, "yaw_link", tf2::TimePointZero, tf2::durationFromSec(0.01));
+            transformStamped = tfBuffer.lookupTransform(chassis_frame_, "yaw_link", tf2::TimePointZero);
         }
         catch (tf2::TransformException &ex)
         {

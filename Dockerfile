@@ -64,7 +64,8 @@ RUN pip3 install \
 WORKDIR /home/sentry_ws
 
 # Groot2 for behaviour tree visualization
-RUN wget https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.5.0-linux-installer.run
+# IF YOU MEET PROBLEM IN THIS LINE, PLEASE CHECK https://www.behaviortree.dev/groot/ for the latest download link
+# RUN wget https://s3.us-west-1.amazonaws.com/download.behaviortree.dev/groot2_linux_installer/Groot2-v1.6.1-linux-installer.run
 RUN echo "alias groot2='~/Groot2/bin/groot2'" >> ~/.bashrc
 
 # Add source code into images and build
@@ -80,21 +81,27 @@ ADD livox_ros_driver2 /home/sentry_ws/src/livox_ros_driver2
 ADD nav2_plugins /home/sentry_ws/src/nav2_plugins
 ADD performance_analysis /home/sentry_ws/src/performance_analysis
 ADD rm_decision_cpp /home/sentry_ws/src/rm_decision_cpp
-ADD rm_hardware_driver /home/sentry_ws/src/rm_hardware_driver
-# ADD rmoss_core /home/sentry_ws/src/rmoss_core
-# ADD rmoss_interfaces /home/sentry_ws/src/rmoss_interfaces
+ADD rm_interfaces /home/sentry_ws/src/rm_interfaces
 ADD sentry_bringup /home/sentry_ws/src/sentry_bringup
+ADD sentry_description /home/sentry_ws/src/sentry_description
 ADD .git/ /home/sentry_ws/src/.git/
 ADD README.md /home/sentry_ws/src/README.md
 ADD DevcontainterGuide.md /home/sentry_ws/src/DevcontainterGuide.md
+
+RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
+    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select behavior_ext_plugins
 
 # build
 RUN rosdepc init && rosdepc update && \
     . /opt/ros/$ROS_DISTRO/setup.sh && \
     rosdepc install -y --from-paths src --ignore-src -r -y --rosdistro $ROS_DISTRO
 
+# build dependencies first
 RUN . /opt/ros/$ROS_DISTRO/setup.sh && \
-    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release 
+    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select livox_ros_driver2 rm_interfaces behaviortree_cpp
+
+RUN . /opt/ros/$ROS_DISTRO/setup.sh && . /home/sentry_ws/install/setup.sh && \
+    colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 # add start script
 CMD /bin/bash

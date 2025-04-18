@@ -12,6 +12,7 @@ find_package(nav2_common REQUIRED)
 find_package(nav2_msgs REQUIRED)
 find_package(nav2_util)
 find_package(nav2_voxel_grid REQUIRED)
+find_package(nav2_costmap_2d REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -35,6 +36,7 @@ set(dependencies
   nav2_msgs
   nav2_util
   nav2_voxel_grid
+  nav2_costmap_2d
   nav_msgs
   pluginlib
   rclcpp

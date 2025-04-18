@@ -242,7 +242,7 @@ namespace nav2_behaviors
     command_x_ = command->target.x;
     command_time_allowance_ = command->time_allowance;
 
-    end_time_ = steady_clock_.now() + command_time_allowance_;
+    end_time_ = this->clock_->now() + command_time_allowance_;
 
     if (!nav2_util::getCurrentPose(
             initial_pose_, *tf_, global_frame_, robot_base_frame_,
@@ -259,7 +259,7 @@ namespace nav2_behaviors
 
   Status BackUpTwzFree::onCycleUpdate()
   {
-    rclcpp::Duration time_remaining = end_time_ - this->steady_clock_.now();
+    rclcpp::Duration time_remaining = end_time_ - this->clock_->now();
     if (time_remaining.seconds() < 0.0 && command_time_allowance_.seconds() > 0.0)
     {
       this->stopRobot();

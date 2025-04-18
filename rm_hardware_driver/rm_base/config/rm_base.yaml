@@ -1,8 +1,0 @@
-/**:
-  ros__parameters:
-    port: "/dev/ttyUSB0"
-    baud_rate: 115200
-    enable_realtime_send: true # Enable async send
-
-    gimbal_cmd_topic: "gimbal_cmd"
-    chassis_cmd_topic_name: "chassis_cmd"

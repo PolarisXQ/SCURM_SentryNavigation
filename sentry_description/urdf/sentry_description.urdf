@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="sentry_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="4.11694385715622E-19 -2.45826406736235E-19 -0.0025"
+        rpy="0 0 0" />
+      <mass
+        value="0.0010707963267949" />
+      <inertia
+        ixx="3.73340671840284E-08"
+        ixy="-9.13030931061204E-26"
+        ixz="-1.0097419586829E-25"
+        iyy="3.73340671840284E-08"
+        iyz="-1.41172157875717E-26"
+        izz="7.02064830064114E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="gimbal_odom">
+    <inertial>
+      <origin
+        xyz="-6.12065439909753E-15 2.32807492375395E-17 -0.129499999999999"
+        rpy="0 0 0" />
+      <mass
+        value="0.0010707963267949" />
+      <inertia
+        ixx="3.73340671840284E-08"
+        ixy="-9.13030931061204E-26"
+        ixz="-1.0097419586829E-25"
+        iyy="3.73340671840284E-08"
+        iyz="-1.41172157875716E-26"
+        izz="7.02064830064114E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/gimbal_odom.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/gimbal_odom.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gimbal_odom"
+    type="fixed">
+    <origin
+      xyz="0 0 0.126999999999999"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="gimbal_odom" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="yaw_link">
+    <inertial>
+      <origin
+        xyz="-0.000216553753372832 -0.00305177765733467 0.0466455908662492"
+        rpy="0 0 0" />
+      <mass
+        value="0.276031013368711" />
+      <inertia
+        ixx="0.000760566810214692"
+        ixy="-8.0376384210343E-20"
+        ixz="-6.57046229514809E-07"
+        iyy="0.000709531205136562"
+        iyz="7.13972218835062E-19"
+        izz="0.000290695981934138" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/yaw_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/yaw_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="yaw_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="yaw_link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="pitch_link">
+    <inertial>
+      <origin
+        xyz="-0.00304877466356313 0.0010462736737472 -0.0113174725757146"
+        rpy="0 0 0" />
+      <mass
+        value="0.341175394777573" />
+      <inertia
+        ixx="0.00052441525100132"
+        ixy="1.31377746844168E-05"
+        ixz="2.47760321915765E-13"
+        iyy="0.00191835384034893"
+        iyz="-1.36588502573607E-13"
+        izz="0.00244164865042018" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/pitch_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/pitch_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pitch_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.127"
+      rpy="0 0 0" />
+    <parent
+      link="yaw_link" />
+    <child
+      link="pitch_link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1"
+      upper="1"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="shoot_link">
+    <inertial>
+      <origin
+        xyz="0.00985194689513733 9.82654510857194E-07 0.0016574569586259"
+        rpy="0 0 0" />
+      <mass
+        value="0.0928728902238975" />
+      <inertia
+        ixx="2.08314627401099E-05"
+        ixy="-5.2831128565155E-09"
+        ixz="-1.93203006468337E-06"
+        iyy="9.99492071094136E-05"
+        iyz="-2.4171828899925E-09"
+        izz="0.000103188750115185" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/shoot_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.203921568627451 0.203921568627451 0.203921568627451 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/shoot_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoot_joint"
+    type="fixed">
+    <origin
+      xyz="0.13275000006729 0 -0.000550000024367947"
+      rpy="0 0 0" />
+    <parent
+      link="pitch_link" />
+    <child
+      link="shoot_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="-2.67877147618556E-05 0.000735839172751995 -0.0294976194445128"
+        rpy="0 0 0" />
+      <mass
+        value="0.0648851430026763" />
+      <inertia
+        ixx="5.47210807668052E-05"
+        ixy="-7.21013803008581E-09"
+        ixz="-3.15564383658102E-08"
+        iyy="5.44992291498232E-05"
+        iyz="2.23463410629662E-06"
+        izz="7.99646847842015E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.0718000000091155 0 0.0714999999908555"
+      rpy="-1.57079632692236 0 -1.5707963267949" />
+    <parent
+      link="pitch_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="lidar_link">
+    <inertial>
+      <origin
+        xyz="-2.40440474503009E-08 -6.03408791058963E-10 0.232360110924128"
+        rpy="0 0 0" />
+      <mass
+        value="1451.08250399175" />
+      <inertia
+        ixx="355.62989343497"
+        ixy="-0.00015195111673779"
+        ixz="8.12420215047547E-07"
+        iyy="367.955003943991"
+        iyz="-6.64827051749432E-10"
+        izz="619.415828371799" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidar_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.316500899999999"
+      rpy="-3.14159265358979 0 0" />
+    <parent
+      link="yaw_link" />
+    <child
+      link="lidar_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="usb_camera_a_link">
+    <inertial>
+      <origin
+        xyz="-1.52655665885959E-16 1.11022302462516E-16 -0.023486258806597"
+        rpy="0 0 0" />
+      <mass
+        value="0.0209680954460364" />
+      <inertia
+        ixx="3.22991901482017E-06"
+        ixy="5.82369786341668E-22"
+        ixz="-5.29395592033938E-22"
+        iyy="3.22991901482017E-06"
+        iyz="-7.67586761100434E-23"
+        izz="4.00080655952044E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/usb_camera_a_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/usb_camera_a_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="usb_camera_a_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0358280058992327 0.124681724007855 0.085966174633034"
+      rpy="-1.57079632679489 0 1.0471975511966" />
+    <parent
+      link="yaw_link" />
+    <child
+      link="usb_camera_a_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="usb_camera_b_link">
+    <inertial>
+      <origin
+        xyz="-1.38777878078145E-16 2.77555756156289E-17 -0.0234862588065968"
+        rpy="0 0 0" />
+      <mass
+        value="0.0209680954460364" />
+      <inertia
+        ixx="3.22991901482017E-06"
+        ixy="2.90385247773039E-22"
+        ixz="-2.64697796016969E-21"
+        iyy="3.22991901482017E-06"
+        iyz="-2.88272753098681E-23"
+        izz="4.00080655952044E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/usb_camera_b_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sentry_description/meshes/usb_camera_b_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="usb_camera_b_joint"
+    type="fixed">
+    <origin
+      xyz="-0.0458280058992335 -0.153681724007852 0.0554999999999989"
+      rpy="-1.5707963267949 0 2.09439510239319" />
+    <parent
+      link="yaw_link" />
+    <child
+      link="usb_camera_b_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <link name="imu_link"/>
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="3.14 0 0"/>
+    <parent
+        link="lidar_link" />
+      <child
+        link="imu_link" />
+  </joint>
+
+  <link name="chassis_link"/>
+  <joint name="chassis_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent
+        link="yaw_link" />
+      <child
+        link="chassis_link" />
+        <axis
+      xyz="0 0 -1" />
+  </joint>
+</robot>
