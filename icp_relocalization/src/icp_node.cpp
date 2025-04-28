@@ -303,7 +303,6 @@ private:
         transformed_cloud_msg.header.stamp = this->now();
         transformed_cloud_msg.header.frame_id = map_frame;
         transformed_cloud_pub_->publish(transformed_cloud_msg);
-        RCLCPP_INFO(this->get_logger(), "ICP fitness score is higher than the threshold, no pose is published");
         target_cloud_msg.header.stamp = this->now();
         map_pub_->publish(target_cloud_msg);
     }
